@@ -1,3 +1,6 @@
+/* import shared library */
+@Library('MrAhile-share-library')_
+
 pipeline {
      environment {
        IMAGE_NAME = "jenkinsapps"
@@ -31,7 +34,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://172.17.0.1 | grep -q "Hello world!"
+                    curl http://172.17.0.1 | grep -q "Hello world"
                 '''
               }
            }
@@ -87,11 +90,10 @@ pipeline {
      }
   }
   post {
-       success {
-         slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-         }
-      failure {
-            slackSend (color: '#F70000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-          }   
+     always {
+       script {
+         slackNotifier currentBuild.result
+     }
     }
+  }
 }
