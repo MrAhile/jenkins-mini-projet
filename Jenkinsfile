@@ -1,6 +1,6 @@
 pipeline {
      environment {
-       IMAGE_NAME = "jenkinsApp"
+       IMAGE_NAME = "jenkinsapps"
        IMAGE_TAG = "v1"
        STAGING = "jenkins-williams-staging"
        PRODUCTION = "jenkins-williams-production"
