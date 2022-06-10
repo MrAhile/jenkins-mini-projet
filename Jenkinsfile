@@ -1,6 +1,3 @@
-/* import shared library */
-@Library('MrAhile-share-library')_
-
 pipeline {
     environment {
         IMAGE_NAME = "webapp-jenkins"
@@ -88,12 +85,5 @@ pipeline {
           }
        }
      }
-  }
-  post {
-     always {
-       script {
-         slackNotifier currentBuild.result
-     }
-    }
   }
 }
