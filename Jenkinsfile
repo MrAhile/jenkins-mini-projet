@@ -2,8 +2,8 @@ pipeline {
      environment {
        IMAGE_NAME = "jenkinsApp"
        IMAGE_TAG = "v1"
-       STAGING = "williams-staging"
-       PRODUCTION = "williams-production"
+       STAGING = "jenkins-williams-staging"
+       PRODUCTION = "jenkins-williams-production"
      }
      agent none
      stages {
