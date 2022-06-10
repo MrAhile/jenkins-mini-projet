@@ -1,9 +1,9 @@
 pipeline {
      environment {
-       IMAGE_NAME = "jenkinsApp"
-       IMAGE_TAG = "v1"
-       STAGING = "mini-projet-jenkins-williams-staging"
-       PRODUCTION = "mini-projet-jenkinswilliams-production"
+       IMAGE_NAME = "alpinehelloworld"
+       IMAGE_TAG = "latest"
+       STAGING = "williams-staging"
+       PRODUCTION = "williams-production"
      }
      agent none
      stages {
@@ -11,7 +11,7 @@ pipeline {
              agent any
              steps {
                 script {
-                  sh 'docker build -t willahile/$IMAGE_NAME:$IMAGE_TAG .'
+                  sh 'docker build -t eazytraining/$IMAGE_NAME:$IMAGE_TAG .'
                 }
              }
         }
@@ -20,7 +20,7 @@ pipeline {
             steps {
                script {
                  sh '''
-                    docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 willahile/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 eazytraining/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
@@ -49,7 +49,7 @@ pipeline {
      }
      stage('Push image in staging and deploy it') {
        when {
-              expression { GIT_BRANCH == 'origin/main' }
+              expression { GIT_BRANCH == 'origin/master' }
             }
       agent any
       environment {
@@ -68,7 +68,7 @@ pipeline {
      }
      stage('Push image in production and deploy it') {
        when {
-              expression { GIT_BRANCH == 'origin/main' }
+              expression { GIT_BRANCH == 'origin/master' }
             }
       agent any
       environment {
