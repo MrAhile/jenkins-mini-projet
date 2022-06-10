@@ -1,7 +1,7 @@
 pipeline {
      environment {
-       IMAGE_NAME = "webapp"
-       IMAGE_TAG = "v1"
+       IMAGE_NAME = "alpinehelloworld"
+       IMAGE_TAG = "latest"
        STAGING = "mini-projet-jenkins-williams-staging"
        PRODUCTION = "mini-projet-jenkins-williams-production"
      }
