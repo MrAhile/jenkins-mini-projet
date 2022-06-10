@@ -1,9 +1,16 @@
 pipeline {
      environment {
+<<<<<<< HEAD
        IMAGE_NAME = "alpinehelloworld"
        IMAGE_TAG = "latest"
        STAGING = "mini-projet-jenkins-williams-staging"
        PRODUCTION = "mini-projet-jenkinswilliams-production"
+=======
+       IMAGE_NAME = "jenkins-mini-projet"
+       IMAGE_TAG = "v1"
+       STAGING = "mini-projet-jenkins-williams-staging"
+       PRODUCTION = "mini-projet-jenkins-williams-production"
+>>>>>>> 830081df073632c95d2dca8ebbfc371743c74986
      }
      agent none
      stages {
@@ -11,7 +18,11 @@ pipeline {
              agent any
              steps {
                 script {
+<<<<<<< HEAD
                   sh 'docker build -t eazytraining/$IMAGE_NAME:$IMAGE_TAG .'
+=======
+                  sh 'docker build -t willahile/$IMAGE_NAME:$IMAGE_TAG .'
+>>>>>>> 830081df073632c95d2dca8ebbfc371743c74986
                 }
              }
         }
@@ -20,7 +31,11 @@ pipeline {
             steps {
                script {
                  sh '''
+<<<<<<< HEAD
                     docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 eazytraining/$IMAGE_NAME:$IMAGE_TAG
+=======
+                    docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 willahile/$IMAGE_NAME:$IMAGE_TAG
+>>>>>>> 830081df073632c95d2dca8ebbfc371743c74986
                     sleep 5
                  '''
                }
